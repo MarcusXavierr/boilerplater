@@ -1,4 +1,4 @@
-package boilerplater
+package main
 
 import (
 	"os"
