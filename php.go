@@ -45,3 +45,15 @@ func (p Php) CreateBoilerplateClass() string {
 	namespace, className := p.ParsePath()
 	return "<?php\nnamespace " + namespace + ";\n\nclass " + className + "\n{\n}"
 }
+
+func (p Php) CreateBoilerplateInterface() string {
+	namespace, className := p.ParsePath()
+	return "<?php\nnamespace " + namespace + ";\n\ninterface " + className + "\n{\n}"
+}
+
+func (p Php) CreateBoilerplate(boilerplateType string) string {
+	if boilerplateType == "c" {
+		return p.CreateBoilerplateClass()
+	}
+	return p.CreateBoilerplateInterface()
+}
