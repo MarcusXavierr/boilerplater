@@ -83,3 +83,38 @@ func TestCreateBoilerplateString(t *testing.T) {
 		check(t, got, want)
 	})
 }
+
+func TestCreateBoilerplateInterface(t *testing.T) {
+	t.Run("create string for php interface", func(t *testing.T) {
+		php := Php{Path: "tests/Feature/Withdraw/WithdrawRequestHistoryServiceTest.php"}
+		got := php.CreateBoilerplateInterface()
+		want := "<?php\nnamespace Tests\\Feature\\Withdraw;\n\ninterface WithdrawRequestHistoryServiceTest\n{\n}"
+		if got != want {
+			t.Errorf("Error: got %q, want %q", got, want)
+		}
+	})
+}
+
+func TestCreateBoilerplate(t *testing.T) {
+
+	check := func(t testing.TB, got, want string) {
+		t.Helper()
+
+		if got != want {
+			t.Errorf("Error: got %q, want %q", got, want)
+		}
+	}
+
+	php := Php{Path: "tests/Feature/Withdraw/WithdrawRequestHistoryServiceTest.php"}
+	t.Run("create a class", func(t *testing.T) {
+		got := php.CreateBoilerplate("c")
+		want := "<?php\nnamespace Tests\\Feature\\Withdraw;\n\nclass WithdrawRequestHistoryServiceTest\n{\n}"
+		check(t, got, want)
+	})
+
+	t.Run("create a interface", func(t *testing.T) {
+		got := php.CreateBoilerplate("i")
+		want := "<?php\nnamespace Tests\\Feature\\Withdraw;\n\ninterface WithdrawRequestHistoryServiceTest\n{\n}"
+		check(t, got, want)
+	})
+}
