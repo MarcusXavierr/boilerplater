@@ -68,7 +68,7 @@ func TestParseString(t *testing.T) {
 	})
 }
 
-func TestCreateBoilerplateString(t *testing.T) {
+func TestCreateBoilerplateClass(t *testing.T) {
 	check := func(t testing.TB, got, want string) {
 		t.Helper()
 
@@ -78,7 +78,7 @@ func TestCreateBoilerplateString(t *testing.T) {
 	}
 	t.Run("create string for laravel class", func(t *testing.T) {
 		php := Php{Path: "tests/Feature/Withdraw/WithdrawRequestHistoryServiceTest.php"}
-		got := php.CreateBoilerplateString()
+		got := php.CreateBoilerplateClass()
 		want := "<?php\nnamespace Tests\\Feature\\Withdraw;\n\nclass WithdrawRequestHistoryServiceTest\n{\n}"
 		check(t, got, want)
 	})

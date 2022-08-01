@@ -41,7 +41,7 @@ func removeFileExtension(filename string) string {
 	return strings.ReplaceAll(filename, ".php", "")
 }
 
-func (p Php) CreateBoilerplateString() string {
+func (p Php) CreateBoilerplateClass() string {
 	namespace, className := p.ParsePath()
 	return "<?php\nnamespace " + namespace + ";\n\nclass " + className + "\n{\n}"
 }
